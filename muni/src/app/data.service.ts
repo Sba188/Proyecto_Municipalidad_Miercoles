@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class DataService {
-  private apiUrl = 'http://localhost/crud.php'; // Cambia esto a la URL de tu script PHP
+  private apiUrl = 'http://localhost/muni/src/backend/crud.php'; // Cambia esto a la URL de tu script PHP
 
   constructor(private http: HttpClient) { }
 
