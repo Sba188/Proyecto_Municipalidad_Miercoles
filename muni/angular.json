@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "muni": {
+    "proyectoMuni": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/muni",
+            "outputPath": "dist/proyecto-muni",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -60,10 +60,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "muni:build:production"
+              "browserTarget": "proyectoMuni:build:production"
             },
             "development": {
-              "browserTarget": "muni:build:development"
+              "browserTarget": "proyectoMuni:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -71,7 +71,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "muni:build"
+            "browserTarget": "proyectoMuni:build"
           }
         },
         "test": {
@@ -94,8 +94,5 @@
         }
       }
     }
-  },
-  "cli": {
-    "analytics": "eab3c8d7-8dfe-4941-a57d-c4692820baa9"
   }
 }
