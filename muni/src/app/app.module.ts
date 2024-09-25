@@ -3,7 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './modules/shared/component/navbar/navbar.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
+//componentes
+import { ConfiguracionesModule } from './modules/configuraciones/configuraciones.module';
 import { SharedModule } from './modules/shared/shared.module';
 
 import { RouterModule, Routes } from '@angular/router';
@@ -13,18 +17,19 @@ import { RouterModule, Routes } from '@angular/router';
 
 @NgModule({
   declarations: [
-
+    AppComponent,
   ],
 
   imports: [
     BrowserModule,
+    SharedModule,
+    ConfiguracionesModule,
     AppRoutingModule,
-    AppComponent,
-    SharedModule
-    
-
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [],
-  bootstrap: []
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
