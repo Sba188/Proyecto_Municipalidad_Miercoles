@@ -4,11 +4,12 @@ import { DatabaseService } from './database.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';  // Importa RouterModule
+import { SharedModule } from './modules/shared/shared.module';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, HttpClientModule, ReactiveFormsModule, RouterModule],
+  imports: [CommonModule, HttpClientModule, ReactiveFormsModule, RouterModule,SharedModule],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
