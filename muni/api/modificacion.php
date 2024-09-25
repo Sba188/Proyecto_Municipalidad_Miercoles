@@ -14,12 +14,13 @@ include("conexion.php");
 if (isset($params->nombre) && isset($params->email) && isset($params->id)) {
     try {
         // Preparar la consulta SQL de actualización
-        $stmt = $conn->prepare("UPDATE usuarios SET nombre = :nombre, email = :email WHERE id = :id");
+        $stmt = $conn->prepare("UPDATE usuarios SET nombre = :nombre, email = :email, pass = :pass WHERE id = :id");
         
         // Ejecutar la consulta con los parámetros proporcionados
         $stmt->execute([
             ':nombre' => $params->nombre,
             ':email' => $params->email,
+            ':pass'=> $params->pass,
             ':id' => $params->id
         ]);
 

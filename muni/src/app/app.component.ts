@@ -41,7 +41,7 @@ export class AppComponent implements OnInit {
     this.modificarUsuarioForm.patchValue({
       NombreUsuario: usuario.NombreUsuario,
       Mail: usuario.Mail,
-      Clave: usuario.Clave
+      pass: usuario.pass
     });
   }
 
@@ -125,20 +125,23 @@ export class AppComponent implements OnInit {
     });
   }
 
-  bajaUsuario(IdUsuarios: number) {
-    this.database.baja(IdUsuarios).subscribe({
+  bajaUsuario(id: number) {
+    this.database.baja(id).subscribe({
       next: (response) => {
-        if (response['resultado'] === 'OK') {
+        console.log(response);  // Revisa qué está devolviendo la API
+        if (response && response['resultado'] === 'OK') {
           alert('Usuario borrado con éxito');
           this.recuperarUsuarios();
         } else {
-          alert('Error al borrar usuario');
+          alert('Error al borrar usuario: ' + response['mensaje'] || 'Desconocido');
         }
       },
       error: (error) => {
         console.error('Error al borrar usuario:', error);
+        alert('Hubo un error al intentar borrar el usuario. Revisa la consola para más detalles.');
       }
     });
   }
+  
 
 }

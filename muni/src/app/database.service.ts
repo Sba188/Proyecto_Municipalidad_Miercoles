@@ -18,8 +18,8 @@ export class DatabaseService {
     return this.http.get(`${this.apiUrl}/recuperartodos.php`);
   }
 
-  baja(IdUsuarios: number): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/baja.php?IdUsuarios=${IdUsuarios}`);
+  baja(id: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/baja.php?id=${id}`);
   }
   
   // Nuevo método para modificar un usuario

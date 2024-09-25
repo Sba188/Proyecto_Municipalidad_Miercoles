@@ -13,7 +13,7 @@
       // Preparamos la consulta usando PDO
       try {
           $stmt = $conn->prepare("DELETE FROM usuarios WHERE id = :id");
-          $stmt->bindParam(':id', $IdUsuarios);
+          $stmt->bindParam(':id', $id);
 
           if ($stmt->execute()) {
               $response = ['resultado' => 'OK', 'mensaje' => 'Usuario borrado'];
