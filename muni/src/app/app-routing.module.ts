@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { NavbarComponent } from './modules/shared/component/navbar/navbar.component';
 import { UsuarioComponent } from './modules/configuraciones/component/usuario/usuario.component';
-import { GrupoComponent } from './modules/configuraciones/component/grupo/grupo.component';
 import { AppComponent } from './app.component';
 
 const routes: Routes = [

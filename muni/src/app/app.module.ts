@@ -10,7 +10,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { ConfiguracionesModule } from './modules/configuraciones/configuraciones.module';
 import { SharedModule } from './modules/shared/shared.module';
 
-import { RouterModule, Routes } from '@angular/router';
 
 //importaciones de angular
 
