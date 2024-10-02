@@ -13,8 +13,18 @@ export class UsuarioComponent implements OnInit {
 
   modificarUsuarioForm: FormGroup; // Formulario para modificar usuario
   usuarioSeleccionado: any = null; // Variable para almacenar el usuario seleccionado
+  
+  mostrarFormulario = false;
+
+  
+  toggleFormulario(){
+    this.mostrarFormulario = !this.mostrarFormulario;
+  }
+
 
   constructor(private database: DatabaseService, private fb: FormBuilder) {
+
+
     // Inicializamos el formulario con tres campos: NombreUsuario, Mail y Clave
     this.usuarioForm = this.fb.group({
       nombre: ['', Validators.required],  // Campo obligatorio
@@ -65,7 +75,6 @@ export class UsuarioComponent implements OnInit {
     }
   }
 
-
   // Este método se ejecuta cuando el componente se inicializa
   ngOnInit(): void {
     this.recuperarUsuarios();  // Al iniciar el componente, se recuperan los usuarios de la base de datos
@@ -88,6 +97,7 @@ export class UsuarioComponent implements OnInit {
             // Si hay un error, se muestra el mensaje recibido del servidor
             alert('Error al crear usuario: ' + (response['mensaje'] || 'Error desconocido'));
           }
+          this.mostrarFormulario = !this.mostrarFormulario
         },
         error: (error) => {
           // En caso de error, se muestra un mensaje de error

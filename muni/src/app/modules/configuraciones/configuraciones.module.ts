@@ -19,6 +19,9 @@ import { GrupoComponent } from './component/grupo/grupo.component';
     ConfiguracionesRoutingModule,
     HttpClientModule,
     ReactiveFormsModule
+  ],
+  exports: [
+    UsuarioComponent
   ]
 })
 export class ConfiguracionesModule { }

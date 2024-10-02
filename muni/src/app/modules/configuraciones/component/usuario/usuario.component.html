@@ -1,7 +1,8 @@
 <div>
+  <button class="creador" (click)="toggleFormulario()" >Nuevo</button>
     <h2>Crear Usuario</h2>
     <!-- Formulario que utiliza FormGroup (Reactive Forms) de Angular -->
-    <form [formGroup]="usuarioForm" (ngSubmit)="submitForm()">
+    <form *ngIf="mostrarFormulario" [formGroup]="usuarioForm" (ngSubmit)="submitForm()">
       <!-- El formGroup 'usuarioForm' está enlazado con el formulario. Cuando se envía el formulario, se ejecuta la función 'submitForm()' -->
       <div>
         <label for="nombre">Nombre:</label>
@@ -30,13 +31,13 @@
       </div>
       <!-- Botón para enviar el formulario -->
       <!-- Se deshabilita el botón si el formulario es inválido (por ejemplo, si no se han completado los campos obligatorios) -->
-      <button type="submit" [disabled]="usuarioForm.invalid">Enviar</button>
+      <button type="submit" [disabled]="usuarioForm.invalid" >Enviar</button>
     </form>
     <h2>Usuarios Registrados</h2>
     <table>
       <thead>
         <tr>
-          <th>IdUsuarios</th>
+          <th>id</th>
           <th>Nombre</th>
           <th>email</th>
           <th>pass</th>
@@ -45,7 +46,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let usuario of usuarios">
-          <td>{{ usuario.IdUsuarios }}</td>
+          <td>{{ usuario.id }}</td>
           <td>{{ usuario.nombre }}</td>
           <td>{{ usuario.email }}</td>
           <td>{{ usuario.pass }}</td>
@@ -53,7 +54,7 @@
        
           <!-- Botón para borrar el usuario -->
           <button (click)="editarUsuario(usuario)">Modificar</button>
-          <button (click)="bajaUsuario(usuario.IdUsuarios)">Borrar</button>
+          <button (click)="bajaUsuario(usuario.id)">Borrar</button>
           </td>
         </tr>
       </tbody>
@@ -72,6 +73,6 @@
       <label for="modificarpass">pass:</label>
       <input id="modificarpass" formControlName="pass" type="password" />
     </div>
-    <button type="submit" [disabled]="modificarUsuarioForm.invalid">Guardar Cambios</button>
+    <button type="submit"[disabled]="modificarUsuarioForm.invalid">Guardar Cambios</button>
   </form>
   </div>

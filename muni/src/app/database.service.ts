@@ -6,24 +6,28 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class DatabaseService {
-  private apiUrl = 'http://localhost/api';
+  private apiUrl = 'http://localhost/apiMiercoles/public/index.php';
 
   constructor(private http: HttpClient) { }
 
   alta(usuarioData: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/alta.php`, usuarioData);
+    console.log(usuarioData)
+    return this.http.post(`${this.apiUrl}../controllers/Router.php`, usuarioData);
   }
 
   recuperar(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/recuperartodos.php`);
+    return this.http.get(`${this.apiUrl}../controllers/Router.php`);
   }
 
   baja(id: number): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/baja.php?id=${id}`);
+    console.log(id)
+    return this.http.delete(`${this.apiUrl}../controllers/Router.php?id=${id}`);
+
   }
   
   // Nuevo método para modificar un usuario
   modificar(usuario: any): Observable<any> {
-    return this.http.put(`${this.apiUrl}/modificacion.php`, usuario);
+    console.log(usuario)
+    return this.http.put(`${this.apiUrl}../controllers/Router.php`, usuario);
   }
 }
