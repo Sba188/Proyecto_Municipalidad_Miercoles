@@ -15,10 +15,14 @@ export class UsuarioComponent implements OnInit {
   usuarioSeleccionado: any = null; // Variable para almacenar el usuario seleccionado
   
   mostrarFormulario = false;
+  mostrarFormularioModificar = false;
 
   
   toggleFormulario(){
     this.mostrarFormulario = !this.mostrarFormulario;
+  }
+  toggleFormularioModificar(){
+    this.mostrarFormularioModificar = !this.mostrarFormularioModificar;
   }
 
 
@@ -42,6 +46,8 @@ export class UsuarioComponent implements OnInit {
   
    // Método para seleccionar un usuario y poblar el formulario de modificación
    editarUsuario(usuario: any) {
+    
+    this.toggleFormularioModificar()
     this.usuarioSeleccionado = usuario;
     this.modificarUsuarioForm.patchValue({
       NombreUsuario: usuario.NombreUsuario,
@@ -53,13 +59,15 @@ export class UsuarioComponent implements OnInit {
   // Método para enviar el formulario de modificación
   submitModificarForm() {
     if (this.modificarUsuarioForm.valid) {
+      
       const usuarioModificado = {
         ...this.usuarioSeleccionado,
         ...this.modificarUsuarioForm.value
       };
       this.database.modificar(usuarioModificado).subscribe({
         next: (response) => {
-          if (response && response['resultado'] === 'OK') {
+          console.log('Respuesta del servidor: ', response)
+          if (response && response.message && response.message.includes('éxito')) {
             alert('Usuario modificado con éxito');
             this.usuarioSeleccionado = null; // Ocultar el formulario después de modificar
             this.recuperarUsuarios(); // Actualizar la lista de usuarios
@@ -89,7 +97,7 @@ export class UsuarioComponent implements OnInit {
       this.database.alta(usuarioData).subscribe({
         next: (response) => {
           // Si la respuesta es correcta y el servidor indica que el usuario fue creado
-          if (response && response['resultado'] === 'OK') {
+          if (response && response.message && response.message.includes('éxito')) {
             alert('Usuario creado con éxito');  // Se muestra un mensaje de éxito
             this.usuarioForm.reset();  // Se resetea el formulario
             this.recuperarUsuarios();  // Se actualiza la lista de usuarios
@@ -134,7 +142,7 @@ export class UsuarioComponent implements OnInit {
     this.database.baja(id).subscribe({
       next: (response) => {
         console.log(response);  // Revisa qué está devolviendo la API
-        if (response && response['resultado'] === 'OK') {
+        if (response && response.message && response.message.includes('éxito')) {
           alert('Usuario borrado con éxito');
           this.recuperarUsuarios();
         } else {
