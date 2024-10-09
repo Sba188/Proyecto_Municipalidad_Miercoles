@@ -1,11 +1,11 @@
 
   .mat-toolbar{
-    background-color:greenyellow ;
+    background-color:rgb(210, 255, 47) ;
   }
   img {
     max-width: 150px; /* Ajusta este valor según el tamaño deseado */
     height: auto; /* Mantener proporciones */
-    margin-right: 1200px; /* Espacio a la derecha de la imagen */
+    margin-right: 1100px; /* Espacio a la derecha de la imagen */
   }
 
   .botones-navbar {
