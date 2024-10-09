@@ -1,24 +1,27 @@
 
   .mat-toolbar{
-    background-color: lightblue;
+    background-color:greenyellow ;
   }
   img {
     max-width: 150px; /* Ajusta este valor según el tamaño deseado */
     height: auto; /* Mantener proporciones */
-    margin-right: 16px; /* Espacio a la derecha de la imagen */
+    margin-right: 1200px; /* Espacio a la derecha de la imagen */
   }
 
-  .seguridad-trigger {
+  .botones-navbar {
     cursor: pointer;
-    color: white; /* Cambiar color según tu diseño */
+    color: rgb(0, 0, 0); /* Cambiar color según tu diseño */
     padding: 4px 8px; /* Espacio alrededor del texto */
     border-radius: 4px; /* Bordes redondeados */
     transition: background-color 0.3s; /* Efecto al pasar el mouse */
   }
-
-  .seguridad-trigger:hover {
-    background-color: rgba(255, 255, 255, 0.308); /* Color al pasar el mouse */
+  .icono-user{
+    display: flex;
+    justify-content: space-between;
   }
+
+
+
   
 
   
