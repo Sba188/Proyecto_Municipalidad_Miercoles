@@ -1,0 +1,70 @@
+
+<!-- table.component.html -->
+<div class="table-container">
+    <div class="header-container">
+      <h2>Roles</h2>
+      <!-- Botón que abre el formulario de creación de roles -->
+      <button class="btn-nuevo" (click)="toggleFormulario()">
+        {{ mostrarFormulario ? 'Cancelar' : 'Nuevo' }}
+      </button>
+    </div>
+  
+    <!-- Mostrar el formulario de creación de roles si mostrarFormulario es verdadero -->
+    <div *ngIf="mostrarFormulario">
+      <form [formGroup]="rolForm" (ngSubmit)="submitForm()">
+        <label for="roleName">Nombre del rol:</label>
+        <input type="text" id="roleName" formControlName="nombre" required>
+        <button type="submit" class="btn btn-primary">Agregar</button>
+      </form>
+    </div>
+  
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>ID de Rol</th>
+          <th>Nombre del Rol</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let rol of roles">
+          <td>
+            <i class="fa fa-pencil" (click)="editarRol(rol)"></i>
+            <i class="fa fa-trash" (click)="bajaRol(rol.id)"></i>
+          </td>
+          <td>{{ rol.id }}</td>
+          <td>{{ rol.nombre }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <!-- Modal para modificar un rol -->
+  <!-- Modal para modificar un rol -->
+  <div id="myModal" class="modal" [ngClass]="{'show': rolSeleccionado !== null}" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Modificar Rol</h5>
+          <button type="button" class="close" (click)="rolSeleccionado = null" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form [formGroup]="modificarRolForm" (ngSubmit)="submitModificarForm()">
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="modificarRoleName">Nombre del rol:</label>
+              <input type="text" id="modificarRoleName" class="form-control" formControlName="nombre" required>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="rolSeleccionado = null">Cancelar</button>
+            <button type="submit" class="btn btn-primary">Modificar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  
+  
